@@ -19,5 +19,12 @@ const getWeatherInfo= async function(){
 	const info= await ApiInformation(latLng,"metric");
 	return info;
 };
+const handleResponses= async function(){
+	const obj= await getWeatherInfo();
+	const weatherResponse= await getWeatherResponse(obj);
+	const locationResponse= await getPositionResponse(getLocation());
+	return{weatherResponse,locationResponse};
+};
 
+export {handleResponses};
 

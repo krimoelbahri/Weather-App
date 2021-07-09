@@ -1,1 +1,2 @@
-console.log("Hello World!");
+import { loadSite } from "./load_page";
+loadSite();

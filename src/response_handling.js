@@ -7,5 +7,12 @@ const getLatLon= async function(location){
 	let lon=response.results[0].locations[0].latLng.lng;
 	return({lat,lon});
 };
+const getLocation= function(){
+	let input= document.getElementById("location");
+	if(!input.value){return;}
+	let location =input.value;
+	console.log(location);
+	return location;
+};
 
 

@@ -1,6 +1,6 @@
 async function getWeatherResponse(apiInfo){
 	try {
-		const response= await fetch(`https://api.openweathermap.org/data/2.5/onecall
+		const response= await fetch(`https://api.openweathermap.org/data/2.5/weather
 		?q=${apiInfo.location}
 		&appid=8452a2b6a15ac50fd5228bc842e291e1
 		&units=${apiInfo.units}`,{mode: "cors"}); 

@@ -18,7 +18,20 @@ let ApiInformation= function(location,units){
 	let lon= location.lon;
 	return{lat,lon,units};
 };
-
+async function getPositionResponse(location){
+	try{
+		const response= await fetch(`http://www.mapquestapi.com/geocoding/v1/address
+		?key=pjoWh14Q0KiA841WCQxvZFfI6SqTI121
+		&location=${location}`,{mode: "cors"});
+		console.log(response);
+		const positionData= await response.json();
+		console.log(positionData);
+		return(positionData);
+	}catch(err){
+		return err;
+	}
+} 
+export {getPositionResponse};
 export {ApiInformation};
 export{getWeatherResponse};
 

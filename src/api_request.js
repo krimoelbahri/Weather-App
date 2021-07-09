@@ -1,8 +1,7 @@
 async function getWeatherResponse(apiInfo){
 	try {
 		const response= await fetch(`https://api.openweathermap.org/data/2.5/onecall
-		?lat=${apiInfo.lat}
-		&lon=${apiInfo.lon}
+		?q=${apiInfo.location}
 		&appid=8452a2b6a15ac50fd5228bc842e291e1
 		&units=${apiInfo.units}`,{mode: "cors"}); 
 		const weatherData= await response.json();
@@ -14,11 +13,12 @@ async function getWeatherResponse(apiInfo){
 	}
 }
 let ApiInformation= function(location,units){
-	let lat= location.lat;
-	let lon= location.lon;
-	return{lat,lon,units};
+	//let lat= location.lat;
+	//let lon= location.lon;
+	return{location,units};
 };
-async function getPositionResponse(location){
+// ignoring this until getting a better geocoding API
+/*async function getPositionResponse(location){
 	try{
 		const response= await fetch(`http://www.mapquestapi.com/geocoding/v1/address
 		?key=pjoWh14Q0KiA841WCQxvZFfI6SqTI121
@@ -30,7 +30,7 @@ async function getPositionResponse(location){
 		return err;
 	}
 } 
-export {getPositionResponse};
+export {getPositionResponse};*/
 export {ApiInformation};
 export{getWeatherResponse};
 

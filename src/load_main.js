@@ -17,10 +17,10 @@ const createTempDiv= function(temp){
 	tempDiv.appendChild(tempInfo);
 	mainInfoContainer.appendChild(tempDiv);
 };
-const createCityDiv= function(city){
+const createCityDiv= function(city,country){
 	let mainInfoContainer=document.getElementById("mainInfoContainer");
 	let cityDateDiv= htmlCreate("div","cityDateDiv","","web_cityDate_div");
-	let cityName= htmlCreate("p","cityName",`${city}`);
+	let cityName= htmlCreate("p","cityName",`${city}, ${country}`);
 	cityDateDiv.appendChild(cityName);
 	mainInfoContainer.appendChild(cityDateDiv);
 };
@@ -50,16 +50,17 @@ const renderMain= async function(){
 	let info= await handleResponses();
 	let temp= info.weatherResponse.main.temp;
 	let city= info.weatherResponse.name;
+	let country= info.weatherResponse.sys.country;
 	let date= info.weatherResponse.dt;
 	let description= info.weatherResponse.weather[0].description;
 	let icon= info.weatherResponse.weather[0].icon;
-	loadMain({temp,city,date,description,icon});
+	loadMain({temp,city,country,date,description,icon});
 };
 const loadMain= function(obj){
 	let mainInfoContainer=document.getElementById("mainInfoContainer");
 	mainInfoContainer.innerHTML="";
 	createTempDiv(obj.temp);
-	createCityDiv(obj.city);
+	createCityDiv(obj.city,obj.country);
 	createDateDiv(obj.date);
 	createIconDiv(obj.icon);
 	createDescriptionDiv(obj.description);

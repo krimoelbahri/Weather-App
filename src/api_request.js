@@ -13,5 +13,12 @@ async function getWeatherResponse(apiInfo){
 		return(err);
 	}
 }
+let ApiInformation= function(location,units){
+	let lat= location.lat;
+	let lon= location.lon;
+	return{lat,lon,units};
+};
+
+export {ApiInformation};
 export{getWeatherResponse};
 

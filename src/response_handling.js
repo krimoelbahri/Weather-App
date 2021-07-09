@@ -14,5 +14,10 @@ const getLocation= function(){
 	console.log(location);
 	return location;
 };
+const getWeatherInfo= async function(){
+	const latLng= await getLatLon(getLocation());
+	const info= await ApiInformation(latLng,"metric");
+	return info;
+};
 
 

@@ -1,0 +1,247 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol,
+ul {
+	list-style: none;
+}
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+}
+h1 {
+	font-weight: bold;
+	font-style: italic;
+}
+.flex_R {
+	display: flex;
+	flex-direction: row;
+}
+.flex_C {
+	display: flex;
+	flex-direction: column;
+}
+.sideBar_div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+}
+#main {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	width: 65%;
+	height: 100%;
+	background: linear-gradient(320deg, #4f8bb9, #669dc4, white);
+}
+#mainInfoContainer {
+	font-family: system-ui;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 80%;
+	height: 20%;
+	margin-bottom: 10%;
+	font-weight: bolder;
+	color: white;
+}
+#tempInfo {
+	font-size: xxx-large;
+}
+#cityDateDiv {
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+#cityName {
+	font-size: x-large;
+}
+#descIconDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#sideBar {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 35%;
+	height: 100%;
+	background: linear-gradient(135deg, #152c44, #1a5ba9, #c6ac93) 70%;
+}
+#searchForm {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 90%;
+	height: 10%;
+	margin-left: 10%;
+}
+#submit {
+	width: 25%;
+	height: 100%;
+	border: none;
+	background-color: #669dc4;
+}
+#locationDiv {
+	width: 60%;
+	height: 100%;
+	justify-content: flex-end;
+}
+#location {
+	width: 100%;
+	height: 40%;
+	border: none;
+	color: gray;
+	border-bottom: 1px solid white;
+	background-color: transparent;
+}
+#sideBarInfoContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 80%;
+	height: 70%;
+	margin-left: 10%;
+	margin-bottom: 10%;
+	font-family: system-ui;
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+

@@ -21,10 +21,12 @@ const getWeatherInfo= async function(){
 	const info= await ApiInformation(getLocation(),"metric");
 	return info;
 };
-const handleResponses= async function(){
-	const obj= await getWeatherInfo();
-	const weatherResponse= await getWeatherResponse(obj);
+const handleResponses= async function(object){
+	if(!object){
+		object= await getWeatherInfo();
+	}
 	//const locationResponse= await getPositionResponse(getLocation());
+	const weatherResponse= await getWeatherResponse(object);
 	return{weatherResponse};
 };
 

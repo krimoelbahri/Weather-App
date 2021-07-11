@@ -46,8 +46,10 @@ const createIconDiv= function(icon){
 	descIconDiv.appendChild(iconInfo);
 	mainInfoContainer.appendChild(descIconDiv);
 };
-const renderMain= async function(){
-	let info= await handleResponses();
+const renderMain= async function(obj){
+	let info;
+	if(!obj){ info= await handleResponses();
+	}else{info= await handleResponses(obj);}
 	let temp= info.weatherResponse.main.temp;
 	let city= info.weatherResponse.name;
 	let country= info.weatherResponse.sys.country;

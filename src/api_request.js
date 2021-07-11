@@ -5,6 +5,7 @@ async function getWeatherResponse(apiInfo){
 		&appid=8452a2b6a15ac50fd5228bc842e291e1
 		&units=${apiInfo.units}`,{mode: "cors"}); 
 		const weatherData= await response.json();
+		console.log(response);
 		console.log(weatherData);
 		return(weatherData);
 	} catch (err){

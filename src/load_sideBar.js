@@ -111,8 +111,10 @@ const createSunsetDiv= function(timeStamp){
 	sunsetDiv.appendChild(sunsetInfo);
 	sideBarInfoContainer.appendChild(sunsetDiv);
 };
-const renderSideBar= async function(){
-	let info= await handleResponses();
+const renderSideBar= async function(obj){
+	let info;
+	if(!obj){ info= await handleResponses();
+	}else{info= await handleResponses(obj);}
 	let minTemp= info.weatherResponse.main.temp_min;
 	let maxTemp= info.weatherResponse.main.temp_max;
 	let cloud= info.weatherResponse.clouds.all;

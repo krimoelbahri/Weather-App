@@ -13,7 +13,6 @@ const getLocation= function(){
 	let input= document.getElementById("location");
 	if(!input.value){return;}
 	let location =input.value;
-	console.log(location);
 	return location;
 };
 const getWeatherInfo= async function(){
@@ -27,7 +26,10 @@ const handleResponses= async function(object){
 	}
 	//const locationResponse= await getPositionResponse(getLocation());
 	const weatherResponse= await getWeatherResponse(object);
-	return{weatherResponse};
+	if(weatherResponse.response.status !== 200){
+		return({status:weatherResponse.response.status, text:weatherResponse.response.statusText});
+	}
+	return{response:weatherResponse.weatherData,status:weatherResponse.response.status};
 };
 
 export {handleResponses};

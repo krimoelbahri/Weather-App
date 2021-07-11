@@ -5,6 +5,18 @@ const sideBarInfoContainer= function(){
 	let sideBarInfoContainer= htmlCreate("div","sideBarInfoContainer","");
 	return sideBarInfoContainer;
 };
+const errorContainer= function(){
+	let errorContainer= htmlCreate("div","errorContainer","","error_div");
+	return errorContainer;
+};
+const showError= function(errorText){
+	let errorContainer= document.getElementById("errorContainer");
+	errorContainer.innerHTML=`<h2>${errorText}</h2>`;
+};
+const hideError=function(){
+	let errorContainer= document.getElementById("errorContainer");
+	errorContainer.innerHTML="";
+};
 const searchForm= function(){
 	let searchForm= htmlCreate("form","searchForm","","web_searchForm");
 	searchForm.innerHTML=`
@@ -18,6 +30,7 @@ const searchForm= function(){
 const createSideBar= function(){
 	let sideBar= htmlCreate("div","sideBar","","web_sideBar");
 	sideBar.appendChild(searchForm());
+	sideBar.appendChild(errorContainer());
 	sideBar.appendChild(sideBarInfoContainer());
 	return sideBar;
 };
@@ -115,17 +128,21 @@ const renderSideBar= async function(obj){
 	let info;
 	if(!obj){ info= await handleResponses();
 	}else{info= await handleResponses(obj);}
-	let minTemp= info.weatherResponse.main.temp_min;
-	let maxTemp= info.weatherResponse.main.temp_max;
-	let cloud= info.weatherResponse.clouds.all;
-	let humidity= info.weatherResponse.main.humidity;
-	let wind= info.weatherResponse.wind.speed;
-	let rain= info.weatherResponse.rain;
-	if(!rain){rain=0;}else{rain= info.weatherResponse.rain["1h"];}
-	let sunrise= info.weatherResponse.sys.sunrise;
-	let sunset= info.weatherResponse.sys.sunset;
-
+	if(info.status!== 200){
+		showError(info.text);
+		return;
+	}
+	let minTemp= info.response.main.temp_min;
+	let maxTemp= info.response.main.temp_max;
+	let cloud= info.response.clouds.all;
+	let humidity= info.response.main.humidity;
+	let wind= info.response.wind.speed;
+	let rain= info.response.rain;
+	if(!rain){rain=0;}else{rain= info.response.rain["1h"];}
+	let sunrise= info.response.sys.sunrise;
+	let sunset= info.response.sys.sunset;
 	loadSideBar({minTemp,maxTemp,cloud,humidity,wind,rain,sunrise,sunset});
+	
 };
 const loadSideBar= function(obj){
 	let sideBarInfoContainer=document.getElementById("sideBarInfoContainer");
@@ -141,6 +158,6 @@ const loadSideBar= function(obj){
 };
 export{createSideBar};
 export{renderSideBar};
-
+export{hideError};
 
 

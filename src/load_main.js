@@ -50,12 +50,15 @@ const renderMain= async function(obj){
 	let info;
 	if(!obj){ info= await handleResponses();
 	}else{info= await handleResponses(obj);}
-	let temp= info.weatherResponse.main.temp;
-	let city= info.weatherResponse.name;
-	let country= info.weatherResponse.sys.country;
-	let date= info.weatherResponse.dt;
-	let description= info.weatherResponse.weather[0].description;
-	let icon= info.weatherResponse.weather[0].icon;
+	if(info.status!== 200){
+		return;
+	}
+	let temp= info.response.main.temp;
+	let city= info.response.name;
+	let country= info.response.sys.country;
+	let date= info.response.dt;
+	let description= info.response.weather[0].description;
+	let icon= info.response.weather[0].icon;
 	loadMain({temp,city,country,date,description,icon});
 };
 const loadMain= function(obj){

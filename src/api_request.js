@@ -4,12 +4,13 @@ async function getWeatherResponse(apiInfo){
 		?q=${apiInfo.location}
 		&appid=8452a2b6a15ac50fd5228bc842e291e1
 		&units=${apiInfo.units}`,{mode: "cors"}); 
-		const weatherData= await response.json();
-		console.log(response);
-		console.log(weatherData);
-		return(weatherData);
+		if(response.status!== 200){
+			return {response};
+		}else{
+			const weatherData= await response.json();
+			return({weatherData:weatherData,response:response});
+		}
 	} catch (err){
-		console.log(err);
 		return(err);
 	}
 }

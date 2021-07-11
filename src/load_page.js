@@ -2,6 +2,7 @@ import { createMain } from "./load_main";
 import { renderMain } from "./load_main";
 import { createSideBar } from "./load_sideBar";
 import { renderSideBar } from "./load_sideBar";
+import { hideError } from "./load_sideBar";
 const loadDefaultPage= function(){
 	let defaultObject={location:"london",units:"metric"};
 	renderMain(defaultObject);
@@ -18,6 +19,8 @@ const loadSite = function(){
 	container.appendChild(createSideBar());
 	let searchForm= document.getElementById("searchForm");
 	searchForm.addEventListener("submit",renderPage);
+	let input= document.getElementById("location");
+	input.addEventListener("click",hideError);
 	loadDefaultPage();
 };
 export {loadSite};
